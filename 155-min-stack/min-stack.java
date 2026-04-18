@@ -1,9 +1,11 @@
 class MinStack {
-     Stack<Integer> s= new Stack<>();
-        Stack<Integer> ms= new Stack<>();
-    public MinStack() {
-      
 
+    Stack<Integer> s;
+    Stack<Integer> ms;
+
+    public MinStack() {
+        s = new Stack<>();
+        ms = new Stack<>();
     }
     
     public void push(int val) {
