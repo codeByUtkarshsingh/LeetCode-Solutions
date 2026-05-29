@@ -1,9 +1,13 @@
 class Solution {
     public int minElement(int[] nums) {
+        int min= Integer.MAX_VALUE;
         for(int i=0;i<nums.length;i++){
             nums[i]=sum(nums[i]);
+            if(nums[i]<min){
+                min= nums[i];
+            }
         }
-        return Arrays.stream(nums).min().getAsInt();
+        return min;
     }
     int sum(int a){
         int r=0;
