@@ -1,20 +1,28 @@
 class Solution {
     public int numberOfSpecialChars(String word) {
-        Set<Character> s= new LinkedHashSet<>();
-        ArrayList<Character> l = new ArrayList<>();
-        
-        for(char ch: word.toCharArray()){
-            s.add(ch);
-            l.add(ch);
-        }
-        int c=0;
-        for(Character ch : s){
-            if(ch>='a' && ch<='z'){
-                if(s.contains((char)(ch-' ')) && l.lastIndexOf(ch)<l.indexOf((char)(ch-' '))){ // not checking for all small chracters
-                    c++;
+        int[] lastLower = new int[26];
+        int[] firstUpper = new int[26];
+        Arrays.fill(lastLower, -1);
+        Arrays.fill(firstUpper, -1);
+        for (int i = 0; i < word.length(); i++) {
+            char ch = word.charAt(i);
+            if (Character.isLowerCase(ch)) {
+                lastLower[ch - 'a'] = i;
+            } else {
+                int idx = ch - 'A';
+                if (firstUpper[idx] == -1) {
+                    firstUpper[idx] = i;
                 }
             }
         }
-        return c;
+        int count = 0;
+        for (int i = 0; i < 26; i++) {
+            if (lastLower[i] != -1 &&
+                firstUpper[i] != -1 &&
+                lastLower[i] < firstUpper[i]) {
+                count++;
+            }
+        }
+        return count;
     }
 }
