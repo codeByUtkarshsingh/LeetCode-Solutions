@@ -9,7 +9,7 @@ class Solution {
                 l++;
             }
             hs.add(s.charAt(r));
-            max = Math.max(max,hs.size());
+            max = Math.max(max,r-l+1);
         }
         return max;
     }
