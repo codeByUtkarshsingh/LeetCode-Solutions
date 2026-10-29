@@ -9,7 +9,7 @@ class Solution {
                 }
             }
         }
-        //dp[i] returns maximum possible length of LIS till i;
+        //dp[i] returns maximum possible length of LIS that ends at i;
         int max = 0;
         for(int n : dp){
             max = Math.max(max,n);
